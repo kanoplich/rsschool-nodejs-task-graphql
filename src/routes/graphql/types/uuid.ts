@@ -1,4 +1,4 @@
-import { GraphQLScalarType, Kind } from 'graphql';
+import { GraphQLScalarType, Kind, GraphQLEnumType } from 'graphql';
 
 const isUUID = (value: unknown): value is string =>
   typeof value === 'string' &&
@@ -27,5 +27,13 @@ export const UUIDType = new GraphQLScalarType({
       }
     }
     return undefined;
+  },
+});
+
+export const MemberTypeId = new GraphQLEnumType({
+  name: "MemberTypeId",
+  values: {
+    BASIC: { value: 'basic' },
+    BUSINESS: { value: 'business' },
   },
 });
